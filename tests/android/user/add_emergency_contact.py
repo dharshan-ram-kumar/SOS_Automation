@@ -1,7 +1,7 @@
 import time
 from appium.webdriver.common.mobileby import MobileBy
 
-from tests.menubar_access import menu_access
+from tests.android.user.menubar_access import menu_access
 
 
 def add_emergency_contact(driver):

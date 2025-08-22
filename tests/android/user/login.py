@@ -28,6 +28,10 @@ def login(driver, phone_number, password):
         time.sleep(3)
         allow_location = driver.find_element(MobileBy.ID, 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
         allow_location.click()
+        # access1 = wait_for_element(driver,MobileBy.ID,'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
+        # access1.click()
+        # access2 = wait_for_element(driver,MobileBy.ID,'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
+        # access2.click()
     except Exception as e:
         print("❌ Test Failed: Login unsuccessful")
         print(f"Error: {e}")
