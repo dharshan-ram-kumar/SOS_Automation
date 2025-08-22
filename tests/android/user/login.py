@@ -17,7 +17,7 @@ def login(driver, phone_number, password):
         type_number.send_keys(phone_number)
         time.sleep(2)
 
-        type_password = driver.find_element(MobileBy.XPATH, '//android.widget.EditText[@text="Enter password"]')
+        type_password = driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Enter password")')
         type_password.send_keys(password)
         time.sleep(2)
 
