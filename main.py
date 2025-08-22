@@ -1,12 +1,13 @@
 import os
 from appium import webdriver
 from dotenv import load_dotenv
-from tests.add_emergency_contact import add_emergency_contact
-from tests.delete_emergency_contact import delete_emergency_contact
-from tests.edit_emergency_contact import edit_emergency_contact
-from tests.login import login
-from tests.profile_image_update import profile
-from tests.view_safety_tips import view_safety
+from tests.android.user.add_emergency_contact import add_emergency_contact
+from tests.android.user.delete_emergency_contact import delete_emergency_contact
+from tests.android.user.edit_emergency_contact import edit_emergency_contact
+from tests.android.user.login import login
+from tests.android.user.profile_image_update import profile
+from tests.android.user.send_alert import send_alert
+from tests.android.user.view_safety_tips import view_safety
 
 load_dotenv()
 
@@ -33,6 +34,7 @@ try:
     add_emergency_contact(driver)
     edit_emergency_contact(driver)
     delete_emergency_contact(driver)
+    send_alert(driver)
 
 finally:
     print("Test Completed")
