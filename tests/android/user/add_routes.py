@@ -3,7 +3,7 @@ from utils.wait_for_element import wait_for_element
 
 def add_routes(driver):
     try:
-        navigate_routes =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("My Routes")')
+        navigate_routes =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().textContains("My Routes")')
         navigate_routes.click()
         click_route_tab = driver.find_element(MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("My Trips")')
         click_route_tab.click()

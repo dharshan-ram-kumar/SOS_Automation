@@ -50,7 +50,7 @@ try:
     login(driver, PHONE_NUMBER, PASSWORD)
     profile(driver)
     view_safety(driver)
-    view_privacy_policy(driver)
+    # view_privacy_policy(driver)
     add_emergency_contact(driver)
     edit_emergency_contact(driver)
     delete_emergency_contact(driver)

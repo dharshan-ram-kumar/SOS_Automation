@@ -25,10 +25,10 @@ def login(driver, phone_number, password):
         click_login_button = driver.find_element(MobileBy.ACCESSIBILITY_ID, 'Login')
         click_login_button.click()
         time.sleep(2)
-        allow_location = driver.find_element(MobileBy.ID, 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
+        allow_location = wait_for_element(driver,MobileBy.ID, 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
         allow_location.click()
         print("✅ Test Passed: Login Successful")
-        access1 = wait_for_element(driver,MobileBy.ID,'com.android.permissioncontroller:id/permission_allow_foreground_only_button',10)
+        access1 = wait_for_element(driver,MobileBy.ID,'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
         if access1:
             access1.click()
         access2 = wait_for_element(driver,MobileBy.ID,'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
