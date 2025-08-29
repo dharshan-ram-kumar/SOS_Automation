@@ -1,3 +1,4 @@
+import time
 from appium.webdriver.common.mobileby import MobileBy
 from utils.wait_for_element import wait_for_element
 
@@ -10,6 +11,7 @@ def edit_routes(driver):
         click_edit =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("")')
         click_edit.click()
 
+        time.sleep(2)
         start_time =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("09:30")')
         start_time.clear()
         start_time =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Start Time (e.g. 09:30)")')
