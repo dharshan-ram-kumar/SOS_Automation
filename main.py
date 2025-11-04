@@ -39,9 +39,10 @@ options.set_capability("automationName", "UiAutomator2")
 options.set_capability("deviceName", "emulator-5554")
 options.set_capability("appPackage", "com.tringapps.womensos")
 options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
-# options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
-# options.set_capability("noReset", True)       # Keeps app data between sessions
-# options.set_capability("fullReset", False)    # Avoids reinstalling app every time
+options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
+# options.set_capability("noReset", True)      # Keeps app data between sessions
+# options.set_capability("fullReset", True)    # Avoids reinstalling app every time
+# options.set_capability("autoGrantPermissions", True)  # Automatically grants runtime permissions
 
 driver = None
 try:
@@ -50,12 +51,11 @@ try:
     login(driver, PHONE_NUMBER, PASSWORD)
     profile(driver)
     view_safety(driver)
-    # view_privacy_policy(driver)
     add_emergency_contact(driver)
     edit_emergency_contact(driver)
     delete_emergency_contact(driver)
-    send_alert(driver)
-    deactivate_alert(driver)
+    # send_alert(driver)
+    # deactivate_alert(driver)
     add_routes(driver)
     edit_routes(driver)
     delete_routes(driver)
@@ -64,13 +64,14 @@ try:
     delete_frequent_location(driver)
     # allow_video(driver)
     chat(driver)
+    view_privacy_policy(driver)
     logout(driver)
 
-    admin_login(driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
+    # admin_login(driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
     # admin_alert(driver)
-    admin_map(driver)
-    admin_chat(driver)
-    admin_logout(driver)
+    # admin_map(driver)
+    # admin_chat(driver)
+    # admin_logout(driver)
 
 finally:
     print("Test Completed")

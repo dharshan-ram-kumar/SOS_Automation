@@ -10,6 +10,12 @@ def delete_emergency_contact(driver):
         delete_contact.click()
         time.sleep(2)
 
+        confirm = driver.find_element(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().resourceId("android:id/button1")',
+        )
+        confirm.click()
+
         contact_name = driver.find_elements(
             AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Test1")'
         )

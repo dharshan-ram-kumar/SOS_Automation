@@ -4,16 +4,16 @@ from utils.wait_for_element import wait_for_element
 
 def edit_frequent_location(driver):
     try:
-        navigate_routes = wait_for_element(
-            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("My Routes")'
-        )
-        navigate_routes.click()
-        click_location_tab = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("Frequent Locations")',
-        )
-        click_location_tab.click()
+        # navigate_routes = wait_for_element(
+        #     driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("My Routes")'
+        # )
+        # navigate_routes.click()
+        # click_location_tab = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("Frequent Locations")',
+        # )
+        # click_location_tab.click()
         edit_location = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("")'
         )

@@ -35,13 +35,14 @@ def add_routes(driver):
             'new UiSelector().text("Search location...")',
         )
         search_from_location.send_keys("Chennai")
-        select_from_location = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("").instance(0)',
-            10,
-        )
-        select_from_location.click()
+        time.sleep(2)
+        # select_from_location = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("").instance(0)',
+        #     10,
+        # )
+        # select_from_location.click()
         confirm_from_location = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")'
         )
@@ -60,13 +61,13 @@ def add_routes(driver):
             'new UiSelector().text("Search location...")',
         )
         search_to_location.send_keys("Chennai")
-        select_to_location = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("").instance(1)',
-            10,
-        )
-        select_to_location.click()
+        # select_to_location = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("").instance(1)',
+        #     10,
+        # )
+        # select_to_location.click()
         confirm_to_location = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")'
         )

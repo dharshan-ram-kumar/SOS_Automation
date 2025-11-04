@@ -1,6 +1,5 @@
 import time
 from appium.webdriver.common.appiumby import AppiumBy
-
 from tests.android.user.menubar_access import menu_access
 
 
@@ -13,7 +12,7 @@ def add_emergency_contact(driver):
         )
         click_profile.click()
         add_contact = driver.find_element(
-            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Add Contact")'
+            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Add").instance(0)'
         )
         add_contact.click()
         time.sleep(2)

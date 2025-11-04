@@ -24,23 +24,23 @@ def profile(driver):
         change_existing_profile = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().textContains("Change Profile Image")',
+            'new UiSelector().text("Pictures")',
             timeout=5,
         )
         if change_existing_profile:
             change_existing_profile.click()
 
-        choose_image = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().className("android.widget.RelativeLayout")',
-        )
-        choose_image.click()
+        # choose_image = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().className("android.widget.RelativeLayout")',
+        # )
+        # choose_image.click()
 
         choose_image1 = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().description("Photo taken on Aug 19, 2025 4:30 PM")',
+            'new UiSelector().description("Photo taken on Nov 4, 2025 3:06 PM")',
         )
         choose_image1.click()
 

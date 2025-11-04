@@ -40,6 +40,7 @@ def login(driver, phone_number, password):
         )
         allow_location.click()
         print("✅ Test Passed: Login Successful")
+        time.sleep(2)
         access1 = wait_for_element(
             driver,
             AppiumBy.ID,
@@ -47,6 +48,7 @@ def login(driver, phone_number, password):
         )
         if access1:
             access1.click()
+        time.sleep(2)
         access2 = wait_for_element(
             driver,
             AppiumBy.ID,
@@ -54,6 +56,7 @@ def login(driver, phone_number, password):
         )
         if access2:
             access2.click()
+        time.sleep(2)
         access3 = wait_for_element(
             driver,
             AppiumBy.ID,
@@ -61,6 +64,7 @@ def login(driver, phone_number, password):
         )
         if access3:
             access3.click()
+        time.sleep(2)
         access4 = wait_for_element(
             driver,
             AppiumBy.ID,

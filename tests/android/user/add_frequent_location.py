@@ -30,13 +30,13 @@ def add_frequent_location(driver):
             'new UiSelector().text("Search location...")',
         )
         search_location.send_keys("Chennai")
-        select_location = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("").instance(0)',
-            10,
-        )
-        select_location.click()
+        # select_location = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("").instance(0)',
+        #     10,
+        # )
+        # select_location.click()
         confirm_location = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")'
         )
