@@ -1,10 +1,14 @@
 import time
-from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.appiumby import AppiumBy
+
 
 def menu_access(driver):
     try:
         time.sleep(2)
-        click_avatar = (driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().className("android.view.ViewGroup").instance(4)'))
+        click_avatar = driver.find_element(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().className("android.view.ViewGroup").instance(6)',
+        )
         click_avatar.click()
         time.sleep(2)
 
