@@ -24,6 +24,7 @@ from tests.android.user.view_privacy_policy import view_privacy_policy
 from tests.android.user.view_safety_tips import view_safety
 from tests.android.user.allow_video import allow_video
 from tests.android.user.chat import chat
+from appium.options.android import UiAutomator2Options
 
 load_dotenv()
 
@@ -32,20 +33,19 @@ PASSWORD = os.getenv("PASSWORD")
 ADMIN_PHONE_NUMBER = os.getenv("ADMIN_PHONE_NUMBER")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
-desired_caps = {
-    "appium:automationName": "UiAutomator2",
-    "platformName": "Android",
-    "appium:deviceName": "emulator-5554",
-    "appium:appActivity": "com.tringapps.womensos.MainActivity",
-    "appium:appPackage": "com.tringapps.womensos",
-    "app": os.path.abspath("./build/WomenSOS.apk"),
-    # "noReset": True, #Clear app data and cache
-    # "fullReset": True #Reinstall app each time
-}
+options = UiAutomator2Options()
+options.set_capability("platformName", "Android")
+options.set_capability("automationName", "UiAutomator2")
+options.set_capability("deviceName", "emulator-5554")
+options.set_capability("appPackage", "com.tringapps.womensos")
+options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
+# options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
+# options.set_capability("noReset", True)       # Keeps app data between sessions
+# options.set_capability("fullReset", False)    # Avoids reinstalling app every time
 
 driver = None
 try:
-    driver = webdriver.Remote("http://127.0.0.1:4723", desired_caps)
+    driver = webdriver.Remote("http://127.0.0.1:4723", options=options)
     print("Test Started")
     login(driver, PHONE_NUMBER, PASSWORD)
     profile(driver)
