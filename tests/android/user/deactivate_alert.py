@@ -1,6 +1,5 @@
 import time
 from appium.webdriver.common.appiumby import AppiumBy
-from utils.long_press import long_press
 from utils.wait_for_element import wait_for_element
 
 
@@ -13,8 +12,8 @@ def deactivate_alert(driver):
             'new UiSelector().text("STOP SOS ALERT")',
         )
         deactivate_alerts.click()
-        print("✅ Test Passed: Alert deactivated successful")
+        print("✅ Test Passed: SOS alert deactivated successful")
 
     except Exception as e:
-        print("❌ Test Failed: Unable to deactivate alert")
+        print("❌ Test Failed: Unable to deactivate SOS alert")
         print(f"Error: {e}")
