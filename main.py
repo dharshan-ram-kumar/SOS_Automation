@@ -18,11 +18,12 @@ from tests.android.user.edit_frequent_location import edit_frequent_location
 from tests.android.user.edit_routes import edit_routes
 from tests.android.user.login import login
 from tests.android.user.logout import logout
+from tests.android.user.medical_emergency_alert import medical_emergency_alert
 from tests.android.user.profile_image_update import profile
 from tests.android.user.send_alert import send_alert
 from tests.android.user.view_privacy_policy import view_privacy_policy
 from tests.android.user.view_safety_tips import view_safety
-from tests.android.user.allow_video import allow_video
+from tests.android.user.send_alert_safe_mode import send_alert_safe_mode
 from tests.android.user.chat import chat
 from appium.options.android import UiAutomator2Options
 
@@ -39,7 +40,7 @@ options.set_capability("automationName", "UiAutomator2")
 options.set_capability("deviceName", "emulator-5554")
 options.set_capability("appPackage", "com.tringapps.womensos")
 options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
-options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
+options.set_capability("app", os.path.abspath("build/WomenSOS1.apk"))
 # options.set_capability("noReset", True)      # Keeps app data between sessions
 # options.set_capability("fullReset", True)    # Avoids reinstalling app every time
 # options.set_capability("autoGrantPermissions", True)  # Automatically grants runtime permissions
@@ -54,24 +55,25 @@ try:
     add_emergency_contact(driver)
     edit_emergency_contact(driver)
     delete_emergency_contact(driver)
-    # send_alert(driver)
-    # deactivate_alert(driver)
+    send_alert(driver)
+    deactivate_alert(driver)
     add_routes(driver)
     edit_routes(driver)
     delete_routes(driver)
     add_frequent_location(driver)
     edit_frequent_location(driver)
     delete_frequent_location(driver)
-    # allow_video(driver)
     chat(driver)
+    send_alert_safe_mode(driver)
+    medical_emergency_alert(driver)
     view_privacy_policy(driver)
     logout(driver)
 
-    # admin_login(driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
-    # admin_alert(driver)
-    # admin_map(driver)
-    # admin_chat(driver)
-    # admin_logout(driver)
+    admin_login(driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
+    admin_alert(driver)
+    admin_map(driver)
+    admin_chat(driver)
+    admin_logout(driver)
 
 finally:
     print("Test Completed")
