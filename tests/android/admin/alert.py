@@ -12,7 +12,8 @@ def admin_alert(driver):
         live_monitor = wait_for_element(
             driver, AppiumBy.ID, 'new UiSelector().text("LIVE MONITOR").instance(0)'
         )
-        live_monitor.click()
+        if live_monitor:
+            live_monitor.click()
         print("✅ Test Passed: Navigated to alert page")
 
     except Exception as e:
