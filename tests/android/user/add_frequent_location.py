@@ -1,9 +1,11 @@
+import time
 from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 
 
 def add_frequent_location(driver):
     try:
+        time.sleep(2)
         navigate_routes = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("My Routes")'
         )

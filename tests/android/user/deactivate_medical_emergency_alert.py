@@ -5,7 +5,6 @@ from utils.wait_for_element import wait_for_element
 
 def deactivate_medical_emergency_alert(driver):
     try:
-        time.sleep(15)
         deactivate_alert = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,

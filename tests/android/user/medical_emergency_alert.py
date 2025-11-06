@@ -2,7 +2,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from utils.long_press import long_press
 from utils.wait_for_element import wait_for_element
 
-def medical_emergency_alert(driver):
+def send_medical_emergency_alert(driver):
     try:
         navigate_home = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Home")'

@@ -3,7 +3,7 @@ from tests.android.user.menubar_access import menu_access
 from utils.wait_for_element import wait_for_element
 
 
-def profile(driver):
+def profile_image_update(driver):
     try:
         menu_access(driver)
 

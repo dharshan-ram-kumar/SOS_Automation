@@ -36,6 +36,8 @@ def send_alert_safe_mode(driver):
         access.click()
         confirm_alert = wait_for_element(driver, AppiumBy.ID, "android:id/button1")
         confirm_alert.click()
+        confirm_alert = wait_for_element(driver, AppiumBy.ID, "android:id/button1")
+        confirm_alert.click()
     except Exception as e:
         print("❌ Test Failed: Unable to enable safe mode or able to send alert in safe mode")
         print(f"Error: {e}")
