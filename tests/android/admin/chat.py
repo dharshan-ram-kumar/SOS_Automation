@@ -1,3 +1,4 @@
+import os
 from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 
@@ -10,10 +11,11 @@ def admin_chat(driver):
             'new UiSelector().textContains("Chats")',
         )
         navigate_chat.click()
+        chat_name = os.getenv("CHAT_NAME")
         click_contact = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().className("android.view.ViewGroup").instance(9)',
+            f'new UiSelector().text("{chat_name}")'
         )
         click_contact.click()
         type_chat = wait_for_element(

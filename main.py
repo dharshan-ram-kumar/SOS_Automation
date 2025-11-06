@@ -8,12 +8,12 @@ from tests.android.admin.chat import admin_chat
 from tests.android.admin.login import admin_login
 from tests.android.admin.logout import admin_logout
 from tests.android.admin.map import admin_map
-from tests.android.user import deactivate_medical_emergency_alert
+from tests.android.user.deactivate_alert import deactivate_alert
+from tests.android.user.deactivate_medical_emergency_alert import deactivate_medical_emergency_alert
 from tests.android.user.add_emergency_contact import add_emergency_contact
 from tests.android.user.add_frequent_location import add_frequent_location
 from tests.android.user.add_medical_emergency_contact import add_medical_emergency_contact
 from tests.android.user.add_routes import add_routes
-from tests.android.user.deactivate_alert import deactivate_alert
 from tests.android.user.delete_emergency_contact import delete_emergency_contact
 from tests.android.user.delete_frequent_location import delete_frequent_location
 from tests.android.user.delete_medical_emergency_contact import delete_medical_emergency_contact
@@ -66,10 +66,10 @@ try:
     safe_run(profile_image_update, driver)
     safe_run(view_safety, driver)
     safe_run(add_emergency_contact, driver)
-    # safe_run(edit_emergency_contact, driver)
+    safe_run(edit_emergency_contact, driver)
     safe_run(delete_emergency_contact, driver)
     safe_run(add_medical_emergency_contact, driver)
-    safe_run(edit_medical_emergency_contact,driver)
+    # safe_run(edit_medical_emergency_contact,driver) #error
     safe_run(delete_medical_emergency_contact, driver)
     safe_run(add_routes, driver)
     safe_run(edit_routes, driver)

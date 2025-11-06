@@ -13,7 +13,8 @@ def admin_map(driver):
             AppiumBy.ID,
             "com.android.permissioncontroller:id/permission_allow_foreground_only_button",
         )
-        allow_location.click()
+        if allow_location:
+            allow_location.click()
         print("✅ Test Passed: Navigated to map page")
 
     except Exception as e:
