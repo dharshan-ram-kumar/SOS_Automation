@@ -8,13 +8,16 @@ from tests.android.admin.logout import admin_logout
 from tests.android.admin.map import admin_map
 from tests.android.user.add_emergency_contact import add_emergency_contact
 from tests.android.user.add_frequent_location import add_frequent_location
+from tests.android.user.add_medical_emergency_contact import add_medical_emergency_contact
 from tests.android.user.add_routes import add_routes
 from tests.android.user.deactivate_alert import deactivate_alert
 from tests.android.user.delete_emergency_contact import delete_emergency_contact
 from tests.android.user.delete_frequent_location import delete_frequent_location
+from tests.android.user.delete_medical_emergency_contact import delete_medical_emergency_contact
 from tests.android.user.delete_route import delete_routes
 from tests.android.user.edit_emergency_contact import edit_emergency_contact
 from tests.android.user.edit_frequent_location import edit_frequent_location
+from tests.android.user.edit_medical_emergency_contact import edit_medical_emergency_contact
 from tests.android.user.edit_routes import edit_routes
 from tests.android.user.login import login
 from tests.android.user.logout import logout
@@ -50,13 +53,16 @@ try:
     driver = webdriver.Remote("http://127.0.0.1:4723", options=options)
     print("Test Started")
     login(driver, PHONE_NUMBER, PASSWORD)
+    send_alert(driver)
+    deactivate_alert(driver)
     profile(driver)
     view_safety(driver)
     add_emergency_contact(driver)
     edit_emergency_contact(driver)
     delete_emergency_contact(driver)
-    send_alert(driver)
-    deactivate_alert(driver)
+    add_medical_emergency_contact(driver)
+    edit_medical_emergency_contact(driver)
+    delete_medical_emergency_contact(driver)
     add_routes(driver)
     edit_routes(driver)
     delete_routes(driver)

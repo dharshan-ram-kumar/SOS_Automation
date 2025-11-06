@@ -9,6 +9,11 @@ def send_alert(driver):
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Home")'
         )
         navigate_home.click()
+        # go_back = wait_for_element(
+        #     driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("")'
+        # )
+        # if go_back:
+        #     go_back.click()
         click_alert = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
