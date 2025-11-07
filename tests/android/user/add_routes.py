@@ -1,47 +1,103 @@
 import time
-from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
+
 
 def add_routes(driver):
     try:
         time.sleep(2)
-        navigate_routes =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().textContains("My Routes")')
+        navigate_routes = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().textContains("My Routes")',
+        )
         navigate_routes.click()
-        click_route_tab = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("My Trips")')
+        click_route_tab = wait_for_element(
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("My Trips")'
+        )
         click_route_tab.click()
-        add_trip =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().description("Add Trip")')
+        add_trip = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().description("Add Trip")',
+        )
         add_trip.click()
         time.sleep(2)
-        pick_from_location = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("").instance(0)')
+        pick_from_location = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("").instance(0)',
+        )
         pick_from_location.click()
-        search_from_location = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Search location...")')
+        search_from_location = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("Search location...")',
+        )
         search_from_location.send_keys("Chennai")
-        select_from_location = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("").instance(0)',10)
-        select_from_location.click()
-        confirm_from_location = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Confirm")')
+        time.sleep(2)
+        # select_from_location = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("").instance(0)',
+        #     10,
+        # )
+        # select_from_location.click()
+        confirm_from_location = wait_for_element(
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")'
+        )
         confirm_from_location.click()
 
         time.sleep(2)
-        pick_to_location =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("").instance(1)')
+        pick_to_location = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("").instance(1)',
+        )
         pick_to_location.click()
-        search_to_location =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Search location...")')
+        search_to_location = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("Search location...")',
+        )
         search_to_location.send_keys("Chennai")
-        select_to_location =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("").instance(1)',10)
-        select_to_location.click()
-        confirm_to_location =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Confirm")')
+        # select_to_location = wait_for_element(
+        #     driver,
+        #     AppiumBy.ANDROID_UIAUTOMATOR,
+        #     'new UiSelector().text("").instance(1)',
+        #     10,
+        # )
+        # select_to_location.click()
+        confirm_to_location = wait_for_element(
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Confirm")'
+        )
         confirm_to_location.click()
 
         time.sleep(2)
-        start_time =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Start Time (e.g. 09:30)")')
+        start_time = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("Start Time (e.g. 09:30)")',
+        )
         start_time.send_keys("09:30")
-        end_time =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("End Time (e.g. 18:45)")')
+        end_time = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("End Time (e.g. 18:45)")',
+        )
         end_time.send_keys("18:45")
-        click_save =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Save")')
+        click_save = wait_for_element(
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Save")'
+        )
         click_save.click()
-        confirmation = wait_for_element(driver,MobileBy.ID,'android:id/button1')
+        confirmation = wait_for_element(driver, AppiumBy.ID, "android:id/button1")
         confirmation.click()
 
-        card =wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.view.ViewGroup").instance(12)')
+        card = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().className("android.view.ViewGroup").instance(12)',
+        )
         if card:
             print("✅ Test Passed: Route added successful")
 

@@ -1,14 +1,18 @@
-from appium.webdriver.common.mobileby import MobileBy
+from appium.webdriver.common.appiumby import AppiumBy
 from tests.android.user.menubar_access import menu_access
+
 
 def view_privacy_policy(driver):
     try:
         menu_access(driver)
 
-        click_privacy_policy = driver.find_element(MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Privacy Policy")')
+        click_privacy_policy = driver.find_element(
+            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Privacy Policy")'
+        )
         click_privacy_policy.click()
-        driver.find_element(MobileBy.ANDROID_UIAUTOMATOR,
-            'new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(3)'
+        driver.find_element(
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(3)",
         )
         print("✅ Test Passed: Privacy policy displayed")
 

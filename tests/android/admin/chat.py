@@ -1,15 +1,32 @@
-from appium.webdriver.common.mobileby import MobileBy
+import os
+from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
+
 
 def admin_chat(driver):
     try:
-        navigate_chat = wait_for_element(driver, MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().textContains("Chats")')
+        navigate_chat = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().textContains("Chats")',
+        )
         navigate_chat.click()
-        click_contact = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().className("android.view.ViewGroup").instance(9)')
+        chat_name = os.getenv("CHAT_NAME")
+        click_contact = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().text("{chat_name}")'
+        )
         click_contact.click()
-        type_chat = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Type a message...")')
+        type_chat = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            'new UiSelector().text("Type a message...")',
+        )
         type_chat.send_keys("Hello")
-        send_chat = wait_for_element(driver,MobileBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("Send")')
+        send_chat = wait_for_element(
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Send")'
+        )
         send_chat.click()
         print("✅ Test Passed: Chat sent successful")
 

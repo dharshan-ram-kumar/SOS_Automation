@@ -1,29 +1,38 @@
 import os
 from appium import webdriver
 from dotenv import load_dotenv
+from appium.options.android import UiAutomator2Options
+
 from tests.android.admin.alert import admin_alert
 from tests.android.admin.chat import admin_chat
 from tests.android.admin.login import admin_login
 from tests.android.admin.logout import admin_logout
 from tests.android.admin.map import admin_map
+from tests.android.user.deactivate_alert import deactivate_alert
+from tests.android.user.deactivate_medical_emergency_alert import deactivate_medical_emergency_alert
 from tests.android.user.add_emergency_contact import add_emergency_contact
 from tests.android.user.add_frequent_location import add_frequent_location
+from tests.android.user.add_medical_emergency_contact import add_medical_emergency_contact
 from tests.android.user.add_routes import add_routes
-from tests.android.user.deactivate_alert import deactivate_alert
 from tests.android.user.delete_emergency_contact import delete_emergency_contact
 from tests.android.user.delete_frequent_location import delete_frequent_location
+from tests.android.user.delete_medical_emergency_contact import delete_medical_emergency_contact
 from tests.android.user.delete_route import delete_routes
 from tests.android.user.edit_emergency_contact import edit_emergency_contact
 from tests.android.user.edit_frequent_location import edit_frequent_location
+from tests.android.user.edit_medical_emergency_contact import edit_medical_emergency_contact
 from tests.android.user.edit_routes import edit_routes
 from tests.android.user.login import login
 from tests.android.user.logout import logout
-from tests.android.user.profile_image_update import profile
+from tests.android.user.medical_alert_safe_mode import send_medical_alert_safe_mode
+from tests.android.user.medical_emergency_alert import send_medical_emergency_alert
+from tests.android.user.profile_image_update import profile_image_update
 from tests.android.user.send_alert import send_alert
 from tests.android.user.view_privacy_policy import view_privacy_policy
 from tests.android.user.view_safety_tips import view_safety
-from tests.android.user.allow_video import allow_video
+from tests.android.user.send_alert_safe_mode import send_alert_safe_mode
 from tests.android.user.chat import chat
+from utils.safe_run import safe_run
 
 load_dotenv()
 
@@ -31,46 +40,60 @@ PHONE_NUMBER = os.getenv("PHONE_NUMBER")
 PASSWORD = os.getenv("PASSWORD")
 ADMIN_PHONE_NUMBER = os.getenv("ADMIN_PHONE_NUMBER")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+EMULATOR_NAME = os.getenv("EMULATOR_NAME","emulator-5554")
+APPIUM_SERVER_URL = os.getenv("APPIUM_SERVER_URL","http://127.0.0.1:4723")
 
-desired_caps = {
-    "appium:automationName": "UiAutomator2",
-    "platformName": "Android",
-    "appium:deviceName": "emulator-5554",
-    "appium:appActivity": "com.tringapps.womensos.MainActivity",
-    "appium:appPackage": "com.tringapps.womensos",
-    "app": os.path.abspath("./build/WomenSOS.apk"),
-    # "noReset": True, #Clear app data and cache
-    # "fullReset": True #Reinstall app each time
-}
+options = UiAutomator2Options()
+options.set_capability("platformName", "Android")
+options.set_capability("automationName", "UiAutomator2")
+options.set_capability("deviceName", EMULATOR_NAME)
+options.set_capability("appPackage", "com.tringapps.womensos")
+options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
+options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
 
 driver = None
-try:
-    driver = webdriver.Remote("http://127.0.0.1:4723", desired_caps)
-    print("Test Started")
-    login(driver, PHONE_NUMBER, PASSWORD)
-    profile(driver)
-    view_safety(driver)
-    # view_privacy_policy(driver)
-    add_emergency_contact(driver)
-    edit_emergency_contact(driver)
-    delete_emergency_contact(driver)
-    send_alert(driver)
-    deactivate_alert(driver)
-    add_routes(driver)
-    edit_routes(driver)
-    delete_routes(driver)
-    add_frequent_location(driver)
-    edit_frequent_location(driver)
-    delete_frequent_location(driver)
-    # allow_video(driver)
-    chat(driver)
-    logout(driver)
 
-    admin_login(driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
-    # admin_alert(driver)
-    admin_map(driver)
-    admin_chat(driver)
-    admin_logout(driver)
+try:
+    driver = webdriver.Remote(APPIUM_SERVER_URL, options=options)
+    print("\n--- Test Execution Started ---\n")
+
+    # User flow
+    safe_run(login, driver, PHONE_NUMBER, PASSWORD)
+    safe_run(send_alert, driver)
+    safe_run(deactivate_alert, driver)
+    safe_run(send_medical_emergency_alert, driver)
+    safe_run(deactivate_medical_emergency_alert,driver)
+    safe_run(send_alert_safe_mode, driver)
+    safe_run(send_medical_alert_safe_mode, driver)
+    safe_run(profile_image_update, driver)
+    safe_run(view_safety, driver)
+    safe_run(add_emergency_contact, driver)
+    safe_run(edit_emergency_contact, driver)
+    safe_run(delete_emergency_contact, driver)
+    safe_run(add_medical_emergency_contact, driver)
+    # safe_run(edit_medical_emergency_contact,driver) #error
+    safe_run(delete_medical_emergency_contact, driver)
+    safe_run(add_routes, driver)
+    safe_run(edit_routes, driver)
+    safe_run(delete_routes, driver)
+    safe_run(add_frequent_location, driver)
+    safe_run(edit_frequent_location, driver)
+    safe_run(delete_frequent_location, driver)
+    safe_run(chat, driver)
+    safe_run(view_privacy_policy, driver)
+    safe_run(logout, driver)
+
+    # Admin flow
+    safe_run(admin_login, driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
+    safe_run(admin_alert, driver)
+    safe_run(admin_map, driver)
+    safe_run(admin_chat, driver)
+    safe_run(admin_logout, driver)
+
+except Exception as e:
+    print(f"Server error: {e}")
 
 finally:
-    print("Test Completed")
+    print("\n--- Test Execution Completed ---")
+    if driver:
+        driver.quit()

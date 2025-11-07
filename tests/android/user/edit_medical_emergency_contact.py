@@ -2,10 +2,10 @@ import time
 from appium.webdriver.common.appiumby import AppiumBy
 
 
-def edit_emergency_contact(driver):
+def edit_medical_emergency_contact(driver):
     try:
         edit_contact = driver.find_element(
-            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("").instance(2)'
+            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("").instance(3)'
         )
         edit_contact.click()
         time.sleep(2)

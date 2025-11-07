@@ -2,7 +2,7 @@ import time
 from appium.webdriver.common.appiumby import AppiumBy
 
 
-def delete_emergency_contact(driver):
+def delete_medical_emergency_contact(driver):
     try:
         delete_contact = driver.find_element(
             AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("")'
@@ -29,8 +29,8 @@ def delete_emergency_contact(driver):
         )
 
         if not contact_name and not contact_relationship and not contact_number:
-            print("✅ Test Passed: Emergency contact deleted successful")
+            print("✅ Test Passed: Medical emergency contact deleted successful")
 
     except Exception as e:
-        print("❌ Test Failed: Unable to delete emergency contact")
+        print("❌ Test Failed: Unable to delete medical emergency contact")
         print(f"Error: {e}")
