@@ -3,6 +3,7 @@ from appium import webdriver
 from dotenv import load_dotenv
 from appium.options.android import UiAutomator2Options
 
+from tests.android.admin.active_alert import active_alert
 from tests.android.admin.alert import admin_alert
 from tests.android.admin.login import admin_login
 from tests.android.admin.logout import admin_logout
@@ -24,6 +25,7 @@ PC_PHONE_NUMBER = os.getenv("PC_PHONE_NUMBER")
 PC_PASSWORD = os.getenv("PC_PASSWORD")
 EMULATOR_NAME = os.getenv("EMULATOR_NAME","emulator-5554")
 APPIUM_SERVER_URL = os.getenv("APPIUM_SERVER_URL","http://127.0.0.1:4723")
+APP_PATH = os.path.abspath("build/WomenSOS.apk")
 
 options = UiAutomator2Options()
 options.set_capability("platformName", "Android")
@@ -31,7 +33,7 @@ options.set_capability("automationName", "UiAutomator2")
 options.set_capability("deviceName", EMULATOR_NAME)
 options.set_capability("appPackage", "com.tringapps.womensos")
 options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
-options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
+options.set_capability("app", APP_PATH)
 
 driver = None
 
@@ -47,7 +49,7 @@ try:
     safe_run(alert_pc, driver)
     safe_run(logout_pc, driver)
     # safe_run(admin_login, driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
-    # safe_run(admin_alert, driver)
+    # safe_run(active_alert, driver)
     # safe_run(admin_logout, driver)
 
 except Exception as e:
