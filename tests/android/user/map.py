@@ -5,7 +5,7 @@ from utils.wait_for_element import wait_for_element
 def user_map(driver):
     try:
         navigate_map = wait_for_element(
-            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Map").instance(1)'
+            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Map")'
         )
         navigate_map.click()
         allow_location = wait_for_element(

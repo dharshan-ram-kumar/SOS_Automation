@@ -81,8 +81,8 @@ try:
     safe_run(add_frequent_location, driver)
     safe_run(edit_frequent_location, driver)
     safe_run(delete_frequent_location, driver)
-    safe_run(chat, driver)
     safe_run(user_map,driver)
+    safe_run(chat, driver)
     safe_run(view_privacy_policy, driver)
     safe_run(logout, driver)
 

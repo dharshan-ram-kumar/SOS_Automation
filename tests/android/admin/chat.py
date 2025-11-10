@@ -8,7 +8,7 @@ def admin_chat(driver):
         navigate_chat = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().textContains("Chats")',
+            'new UiSelector().text("Chats")',
         )
         navigate_chat.click()
         chat_name = os.getenv("CHAT_NAME")

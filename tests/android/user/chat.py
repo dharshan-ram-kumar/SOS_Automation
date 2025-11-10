@@ -26,7 +26,7 @@ def chat(driver):
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Send")'
         )
         send_chat.click()
-        print("✅ Test Passed: Chat sent successful")
+        print("✅ Test Passed: Chat sent successful to the control room")
 
         send_location = wait_for_element(
             driver,
@@ -35,7 +35,7 @@ def chat(driver):
         )
         send_location.click()
         time.sleep(5)
-        print("✅ Test Passed: Live location sent successful")
+        print("✅ Test Passed: Live location sent successful to the control room")
 
     except Exception as e:
         print("❌ Test Failed: Unable to send message")
