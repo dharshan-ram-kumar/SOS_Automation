@@ -43,6 +43,7 @@ ADMIN_PHONE_NUMBER = os.getenv("ADMIN_PHONE_NUMBER")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 EMULATOR_NAME = os.getenv("EMULATOR_NAME","emulator-5554")
 APPIUM_SERVER_URL = os.getenv("APPIUM_SERVER_URL","http://127.0.0.1:4723")
+APP_PATH = os.path.abspath("build/WomenSOS.apk")
 
 options = UiAutomator2Options()
 options.set_capability("platformName", "Android")
@@ -50,7 +51,7 @@ options.set_capability("automationName", "UiAutomator2")
 options.set_capability("deviceName", EMULATOR_NAME)
 options.set_capability("appPackage", "com.tringapps.womensos")
 options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
-options.set_capability("app", os.path.abspath("build/WomenSOS.apk"))
+options.set_capability("app", APP_PATH)
 
 driver = None
 
