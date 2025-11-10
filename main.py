@@ -24,6 +24,7 @@ from tests.android.user.edit_medical_emergency_contact import edit_medical_emerg
 from tests.android.user.edit_routes import edit_routes
 from tests.android.user.login import login
 from tests.android.user.logout import logout
+from tests.android.user.map import user_map
 from tests.android.user.medical_alert_safe_mode import send_medical_alert_safe_mode
 from tests.android.user.medical_emergency_alert import send_medical_emergency_alert
 from tests.android.user.profile_image_update import profile_image_update
@@ -80,6 +81,7 @@ try:
     safe_run(edit_frequent_location, driver)
     safe_run(delete_frequent_location, driver)
     safe_run(chat, driver)
+    safe_run(user_map,driver)
     safe_run(view_privacy_policy, driver)
     safe_run(logout, driver)
 
