@@ -1,5 +1,5 @@
 from appium.webdriver.common.appiumby import AppiumBy
-from tests.android.user.menubar_access import menu_access
+from tests.android.user.positive_cases.menubar_access import menu_access
 from utils.wait_for_element import wait_for_element
 
 

@@ -2,13 +2,13 @@ from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 
 
-def alert_pc(driver):
+def pc_verify_alert(driver):
     try:
         navigate_alert_page = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Alerts")'
         )
         navigate_alert_page.click()
-        verify_active = wait_for_element(driver,AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().textContains("ACTIVE").instance(0)')
+        verify_active = wait_for_element(driver,AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text("ACTIVE")')
         if verify_active:
             print("✅ Test Passed: Active alert found in alert page")
         else:

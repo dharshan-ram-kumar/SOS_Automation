@@ -13,7 +13,8 @@ def login(driver, phone_number, password):
                 AppiumBy.ID,
                 "com.android.permissioncontroller:id/permission_allow_button",
             )
-            allow_notification.click()
+            if allow_notification:
+                allow_notification.click()
             time.sleep(2)
         except NoSuchElementException:
             pass
@@ -38,7 +39,8 @@ def login(driver, phone_number, password):
             AppiumBy.ID,
             "com.android.permissioncontroller:id/permission_allow_foreground_only_button",
         )
-        allow_location.click()
+        if allow_location:
+            allow_location.click()
         print("✅ Test Passed: Login Successful")
         time.sleep(2)
         access1 = wait_for_element(

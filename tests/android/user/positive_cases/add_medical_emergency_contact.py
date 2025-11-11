@@ -1,9 +1,9 @@
 import time
 from appium.webdriver.common.appiumby import AppiumBy
-from tests.android.user.menubar_access import menu_access
+from tests.android.user.positive_cases.menubar_access import menu_access
 
 
-def add_emergency_contact(driver):
+def add_medical_emergency_contact(driver):
     try:
         menu_access(driver)
 
@@ -12,7 +12,7 @@ def add_emergency_contact(driver):
         )
         click_profile.click()
         add_contact = driver.find_element(
-            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Add").instance(0)'
+            AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Add").instance(1)'
         )
         add_contact.click()
         time.sleep(2)
@@ -41,8 +41,8 @@ def add_emergency_contact(driver):
             'new UiSelector().resourceId("android:id/button1")',
         )
         success_message.click()
-        print("✅ Test Passed: Emergency contact added successful")
+        print("✅ Test Passed: Medical emergency contact added successful")
 
     except Exception as e:
-        print("❌ Test Failed: Unable to add emergency contact")
+        print("❌ Test Failed: Unable to add medical emergency contact")
         print(f"Error: {e}")

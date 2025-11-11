@@ -1,5 +1,5 @@
-# Function to avoid test execution crashes
 def safe_run(test_func, *args):
+    """Function to avoid test execution crashes"""
     try:
         print(f"Running test: {test_func.__name__}")
         test_func(*args)

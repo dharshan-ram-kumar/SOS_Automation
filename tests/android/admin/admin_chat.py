@@ -1,42 +1,35 @@
-import time
-
+import os
 from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 
 
-def chat(driver):
+def admin_chat(driver):
     try:
         navigate_chat = wait_for_element(
-            driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Chat")'
-        )
-        navigate_chat.click()
-        click_control_room = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("Control Room")',
+            'new UiSelector().text("Chats")',
         )
-        click_control_room.click()
+        navigate_chat.click()
+        chat_name = os.getenv("CHAT_NAME")
+        click_contact = wait_for_element(
+            driver,
+            AppiumBy.ANDROID_UIAUTOMATOR,
+            f'new UiSelector().text("{chat_name}")'
+        )
+        click_contact.click()
         type_chat = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,
             'new UiSelector().text("Type a message...")',
         )
-        type_chat.send_keys("Hello Control Room")
+        type_chat.send_keys("Hello")
         send_chat = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Send")'
         )
         send_chat.click()
         print("✅ Test Passed: Chat sent successful")
 
-        send_location = wait_for_element(
-            driver,
-            AppiumBy.ANDROID_UIAUTOMATOR,
-            'new UiSelector().text("").instance(1)',
-        )
-        send_location.click()
-        time.sleep(5)
-        print("✅ Test Passed: Live location sent successful")
-
     except Exception as e:
-        print("❌ Test Failed: Unable to send message")
+        print("❌ Test Failed: Unable to send chat")
         print(f"Error: {e}")
