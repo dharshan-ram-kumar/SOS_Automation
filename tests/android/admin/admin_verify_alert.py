@@ -2,7 +2,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 
 
-def active_alert(driver):
+def admin_verify_alert(driver):
     try:
         navigate_alert_page = wait_for_element(
             driver, AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Alerts")'

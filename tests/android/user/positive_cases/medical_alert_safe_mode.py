@@ -1,8 +1,8 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
-from tests.android.user.deactivate_medical_emergency_alert import deactivate_medical_emergency_alert
-from tests.android.user.medical_emergency_alert import send_medical_emergency_alert
-from tests.android.user.menubar_access import menu_access
+from tests.android.user.positive_cases.deactivate_medical_emergency_alert import deactivate_medical_emergency_alert
+from tests.android.user.positive_cases.medical_emergency_alert import send_medical_emergency_alert
+from tests.android.user.positive_cases.menubar_access import menu_access
 from utils.wait_for_element import wait_for_element
 
 

@@ -4,7 +4,7 @@ from selenium.common.exceptions import NoSuchElementException
 from utils.wait_for_element import wait_for_element
 
 
-def login_pc(driver, phone_number, password):
+def pc_login(driver, phone_number, password):
     try:
         time.sleep(2)
         try:
