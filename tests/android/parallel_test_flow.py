@@ -14,7 +14,7 @@ from utils.safe_run import safe_run
 
 def run_parallel_test_flow(driver,phone_number, password,admin_phone_number,admin_password,pc_phone_number,pc_password):
     """Execute parallel flow test cases sequentially."""
-    print("\n--- Executing Parallel Test Flow Started ---\n")
+    print("\n--- Executing Parallel Test Flow ---\n")
 
     # Send alert from user login
     safe_run(login, driver, phone_number, password)
@@ -31,4 +31,3 @@ def run_parallel_test_flow(driver,phone_number, password,admin_phone_number,admi
     safe_run(admin_login, driver, admin_phone_number, admin_password)
     safe_run(admin_verify_alert, driver)
     safe_run(admin_logout, driver)
-

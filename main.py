@@ -46,6 +46,6 @@ except Exception as e:
     print(f"Server Error: {e}")
 
 finally:
-    print("--- Test Execution Completed ---")
+    print("\n--- Test Execution Completed ---\n")
     if driver:
         driver.quit()
