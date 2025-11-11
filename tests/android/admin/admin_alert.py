@@ -1,4 +1,3 @@
-from datetime import time
 from appium.webdriver.common.appiumby import AppiumBy
 from utils.wait_for_element import wait_for_element
 

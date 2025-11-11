@@ -3,16 +3,18 @@ from appium import webdriver
 from dotenv import load_dotenv
 from appium.options.android import UiAutomator2Options
 
-from tests.android.admin.active_alert import active_alert
-from tests.android.admin.alert import admin_alert
-from tests.android.admin.login import admin_login
-from tests.android.admin.logout import admin_logout
-from tests.android.primary_contact.alert import alert_pc
-from tests.android.primary_contact.login import login_pc
-from tests.android.primary_contact.logout import logout_pc
-from tests.android.user.login import login
-from tests.android.user.logout import logout
-from tests.android.user.send_alert import send_alert
+from tests.android.admin.admin_login import admin_login
+from tests.android.admin.admin_verify_alert import admin_verify_alert
+from tests.android.admin.admin_logout import admin_logout
+
+from tests.android.primary_contact.pc_verify_alert import pc_verify_alert
+from tests.android.primary_contact.pc_login import pc_login
+from tests.android.primary_contact.pc_logout import pc_logout
+
+from tests.android.user.positive_cases.login import login
+from tests.android.user.positive_cases.logout import logout
+from tests.android.user.positive_cases.send_alert import send_alert
+
 from utils.safe_run import safe_run
 
 load_dotenv()
@@ -40,16 +42,21 @@ driver = None
 try:
     driver = webdriver.Remote(APPIUM_SERVER_URL, options=options)
     print("\n--- Test Execution Started ---\n")
-    # Send alert flow
+
+    # Send alert from user login
     safe_run(login, driver, PHONE_NUMBER, PASSWORD)
     safe_run(send_alert, driver)
     print("✅ Test Passed: Alert sent from user side")
     safe_run(logout, driver)
-    safe_run(login_pc, driver, PC_PHONE_NUMBER, PC_PASSWORD)
-    safe_run(alert_pc, driver)
-    safe_run(logout_pc, driver)
+
+    # Verify alert in primary contact login
+    safe_run(pc_login, driver, PC_PHONE_NUMBER, PC_PASSWORD)
+    safe_run(pc_verify_alert, driver)
+    safe_run(pc_logout, driver)
+
+    # Verify alert in admin login
     safe_run(admin_login, driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
-    safe_run(active_alert, driver)
+    safe_run(admin_verify_alert, driver)
     safe_run(admin_logout, driver)
 
 except Exception as e:

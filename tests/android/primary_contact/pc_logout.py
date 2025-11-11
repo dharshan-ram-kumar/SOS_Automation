@@ -3,7 +3,7 @@ from tests.android.user.positive_cases.menubar_access import menu_access
 from utils.wait_for_element import wait_for_element
 
 
-def logout_pc(driver):
+def pc_logout(driver):
     try:
         menu_access(driver)
         click_logout = wait_for_element(
