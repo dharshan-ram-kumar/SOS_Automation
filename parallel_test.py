@@ -48,9 +48,9 @@ try:
     safe_run(login_pc, driver, PC_PHONE_NUMBER, PC_PASSWORD)
     safe_run(alert_pc, driver)
     safe_run(logout_pc, driver)
-    # safe_run(admin_login, driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
-    # safe_run(active_alert, driver)
-    # safe_run(admin_logout, driver)
+    safe_run(admin_login, driver, ADMIN_PHONE_NUMBER, ADMIN_PASSWORD)
+    safe_run(active_alert, driver)
+    safe_run(admin_logout, driver)
 
 except Exception as e:
     print(f"Server error: {e}")
