@@ -26,6 +26,12 @@ def login(driver, phone_number, password):
                 print("✅ Test Passed: Notification permission dialog is not visible again")
         except NoSuchElementException:
             pass
+        deny_notification = wait_for_element(driver,
+                                             AppiumBy.ID,
+                                             "com.android.permissioncontroller:id/permission_deny_and_dont_ask_again_button",
+                                             )
+        if deny_notification:
+            deny_notification.click()
 
         invalid_number = wait_for_element(driver,
             AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("0000000000")'
