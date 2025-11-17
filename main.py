@@ -26,6 +26,7 @@ options.set_capability("deviceName", EMULATOR_NAME)
 options.set_capability("appPackage", "com.tringapps.womensos")
 options.set_capability("appActivity", "com.tringapps.womensos.MainActivity")
 options.set_capability("app", APP_PATH)
+options.set_capability("autoGrantPermissions", True)
 
 driver = None
 
