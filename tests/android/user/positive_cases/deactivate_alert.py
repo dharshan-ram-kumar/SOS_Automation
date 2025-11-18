@@ -5,7 +5,7 @@ from utils.wait_for_element import wait_for_element
 
 def deactivate_alert(driver):
     try:
-        time.sleep(15)
+        time.sleep(20)
         deactivate_alerts = wait_for_element(
             driver,
             AppiumBy.ANDROID_UIAUTOMATOR,

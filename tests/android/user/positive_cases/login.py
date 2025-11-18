@@ -19,19 +19,19 @@ def login(driver, phone_number, password):
         # except NoSuchElementException:
         #     pass
 
-        type_number = driver.find_element(
+        type_number = wait_for_element(driver,
             AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("0000000000")'
         )
         type_number.send_keys(phone_number)
         time.sleep(2)
 
-        type_password = driver.find_element(
+        type_password = wait_for_element(driver,
             AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Enter password")'
         )
         type_password.send_keys(password)
         time.sleep(2)
 
-        click_login_button = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "Login")
+        click_login_button = wait_for_element(driver,AppiumBy.ACCESSIBILITY_ID, "Login")
         click_login_button.click()
         time.sleep(2)
 

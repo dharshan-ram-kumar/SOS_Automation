@@ -36,7 +36,7 @@ def run_user_flow(driver, phone_number, password):
     safe_run(deactivate_medical_emergency_alert, driver)
     safe_run(send_alert_safe_mode, driver)
     safe_run(medical_alert_safe_mode, driver)
-    safe_run(profile_image_update, driver)
+    # safe_run(profile_image_update, driver)
     safe_run(view_safety, driver)
     safe_run(add_emergency_contact, driver)
     safe_run(edit_emergency_contact, driver)

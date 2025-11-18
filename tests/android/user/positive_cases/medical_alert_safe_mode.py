@@ -19,6 +19,7 @@ def medical_alert_safe_mode(driver):
         close_menu.click()
         medical_emergency_alert(driver)
         deactivate_medical_emergency_alert(driver)
+
     except Exception as e:
         print("❌ Test Failed: Unable to enable safe mode or able to send alert in safe mode")
         print(f"Error: {e}")
